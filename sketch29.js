@@ -12,10 +12,8 @@ function preload(){
 
 function setup(){
   createCanvas(400,400);
-  //creating the ship
 
-
-  //making the sea background
+    //making the sea background
   sea=createSprite(400,200,20,20);
   sea.addImage(seaImage);
   sea.velocityX=-5
