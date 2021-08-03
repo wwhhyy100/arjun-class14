@@ -1,5 +1,5 @@
-var jaxon, jaxon_runner, jaxon_collided;
-var path, pathImage;
+var jaxon, jaxon_runner, jaxon_collided
+var path, pathImage
 
 function preload(){
 
@@ -12,17 +12,17 @@ function preload(){
 }
 
 function setup(){
-  createCanvas(400,400);
+  createCanvas(400,400)
 
   //create sprites here;
 
-  path=createSprite(400,200,20,20);
-  path.addImage(pathImage);
-  path.velocityY = -5;
-  path.scale = 1.5;
+  path=createSprite(400,200,20,20)
+  path.addImage(pathImage)
+  path.velocityY = -5
+  path.scale = 1.5
 
-  jaxon = createSprite(130,260,20,20);  
-  jaxon.addAnimation("running",jaxon_runner);
+  jaxon = createSprite(130,260,20,20)  
+  jaxon.addAnimation("running",jaxon_runner)
   jaxon.scale = 0.5
 
 }
