@@ -1,95 +1,48 @@
-var garden,rabbit;
-var gardenImage,rabbitImage;
-var apple,appleImage
-var leafImage,leaf
+var jaxon, jaxon_runner, jaxon_collided
+var path, pathImage
 
 function preload(){
-  gardenImage = loadImage("garden.png");
-  rabbitImage = loadImage("rabbit.png");
-  appleImage = loadImage("apple.png")
-  leafImage = loadImage("leaf.png")
+
+  //pre-load images;
+
+  pathImage = loadImage("path.png");
+
+  jaxon_runner = loadAnimation("Runner-1.png, Runner-2.png");
+
 }
 
 function setup(){
-  
-  createCanvas(400,400);
-  
-// Moving background
-garden=createSprite(200,200);
-garden.addImage(gardenImage);
+  createCanvas(400,400)
 
-//creating rabbit
-rabbit = createSprite(180,399,30,30);
-rabbit.scale =0.076;
-rabbit.addImage(rabbitImage);
+  //create sprites here;
 
+  path=createSprite(400,200,20,20)
+  path.addImage(pathImage)
+  path.velocityY = -5
+  path.scale = 1.5
 
-var rand =  Math.round(random(1,100))
-console.log(rand)
+  jaxon = createSprite(130,260,20,20)  
+  jaxon.addAnimation("running",jaxon_runner)
+  jaxon.scale = 0.5
 
 }
 
 function draw() {
-  background(0);
 
+  background("white");
 
-  rabbit.x = World.mouseX;
-    
+  jaxon.x = mouse.x;
+
+ 
   
-
-  
-  edges= createEdgeSprites();
-  rabbit.collide(edges);
-
-  spawnLeaf();
-  spawnApples();
-  drawSprites();
-}
+  jaxon.collided(leftEdge); 
+  jaxon.collided(rightEdge);
 
 
-function spawnApples(){
-
-if(frameCount %  40 === 0){
-
-
-//creating the apple
-apple = createSprite(200,50,10,10);
-apple.scale = 0.04;
-apple.addImage(appleImage);
-apple.velocityY = 5
-
-apple.x = Math.round(random(20,300))
-
-console.log(rabbit.depth);
-
-console.log(apple.depth); 
-
-apple.depth = rabbit.depth  
-
-rabbit.depth = rabbit.depth+2
-}
- }
-
-function spawnLeaf(){
-
-  if(frameCount %  40 === 0){
-
-
-//creating the leaf
-leaf = createSprite(100,50,10,10);
-leaf.scale = 0.04;
-leaf.addImage(leafImage);
-leaf.velocityY = 5
-
-leaf.x = Math.round(random(200,300))
-
-console.log(rabbit.depth);
-
-console.log(leaf.depth); 
-
-leaf.depth = rabbit.depth  
-
-rabbit.depth = rabbit.depth+2
-
+ //code to make backgrond infenite 
+  if (path.y < 200){  
+    path.y=path.width/2;
   }
+
+  drawSprites();
 }
